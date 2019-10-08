@@ -11,8 +11,8 @@ public class WebConfiguration implements WebMvcConfigurer {
 
 
     @Bean
-    public FilterRegistrationBean loggingFilter() {
-        FilterRegistrationBean registrationBean = new FilterRegistrationBean(new LoggingFilter());
+    public FilterRegistrationBean<LoggingFilter> loggingFilter() {
+        FilterRegistrationBean<LoggingFilter> registrationBean = new FilterRegistrationBean<LoggingFilter>(new LoggingFilter());
         registrationBean.setOrder(1);
         return registrationBean;
     }

@@ -50,7 +50,6 @@ public class LoggingFilter extends AbstractRequestLoggingFilter {
     }
 
     private boolean isStatiContent(HttpServletRequest request){
-        String contextPath = request.getRequestURI();
         return request.getContextPath().contains(".js") ||
                 request.getContextPath().contains(".html") ||
                 request.getContextPath().contains(".css");
