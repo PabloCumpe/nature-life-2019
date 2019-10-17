@@ -24,6 +24,8 @@ public class UserEntity {
     private String password;
 
     private LocalDateTime creationDate;
+    
+    private String testField;
 
     public UserEntity(String firsName, String lastName, String mail, String password, LocalDateTime creationDate) {
         this.firstName = firsName;
