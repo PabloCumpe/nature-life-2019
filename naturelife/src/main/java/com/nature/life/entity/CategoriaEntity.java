@@ -9,7 +9,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 
 @Entity(name = "categoria")
-public class Categoria {
+public class CategoriaEntity {
 	
 	@Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -20,11 +20,11 @@ public class Categoria {
 	 
 	private String descripcion;
 		
-	public Categoria() {
+	public CategoriaEntity() {
 		
 	}
 	
-	public Categoria(BigInteger idCategoria, String nombre, String descripcion ) {
+	public CategoriaEntity(BigInteger idCategoria, String nombre, String descripcion ) {
 		this.idCategoria = idCategoria;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
