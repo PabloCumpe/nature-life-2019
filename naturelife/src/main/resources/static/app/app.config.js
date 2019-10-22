@@ -10,11 +10,11 @@ angular.module("naturLife")
     .when("/", {
         template : '<products-list></products-list>'
     })
-    .when("/contact", {
-        template : "<h1>CONTACT COMPONENT</h1>"
+    .when("/cart", {
+        template : "<cart></cart>"
     })
-    .when("/about", {
-        template : "<h1>ABOUT COMPONENT</h1>"
+    .when("/checkout", {
+        template : "<h1>check out component</h1>"
     })
     .otherwise({
         template : "<h1>NOT COMPONENT MAP FOR THAT URI</h1>"

@@ -1,8 +1,13 @@
 
 angular.module("naturLife", [
     "ngRoute",
-    "nav",
+    "navNaturLife",
     "productsList",
-    "productsService"
+    "productsService",
+    "angularCSS",
+    "naturLifeFooter",
+    "cart",
+
+    "loading"
 
 ]);

@@ -1,12 +1,22 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <base href="/">
-
 </head>
 <title>Naturlife</title>
+
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css">
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+<link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet"
+    integrity="sha384-wvfXpqpZZVQGK6TAh5PVlGOfQNHSoD2xbE+QkPxCAFlNEevoEH3Sl0sibVcOQVnN" crossorigin="anonymous">
+
+
 <script src="./libs/angular.min.js"></script>
 <script src="./libs/angular-route.js"></script>
+<script src="./libs/angular.min.css.js"></script>
 <script src="./app/app.module.js"></script>
 <script src="./app/app.config.js"></script>
 <script src="./app/services/products/products.module.js"></script>
@@ -15,18 +25,23 @@
 <script src="./app/components/nav/nav.component.js"></script>
 <script src="./app/components/products-list/products-list.module.js"></script>
 <script src="./app/components/products-list/products-list.component.js"></script>
+<script src="./app/components/natur-life-footer/natur-life-footer.module.js"></script>
+<script src="./app/components/natur-life-footer/natur-life-footer.component.js"></script>
+<script src="./app/components/cart/cart.module.js"></script>
+<script src="./app/components/cart/cart.component.js"></script>
+<script src="./app/directives/loading/loading.directive.module.js"></script>
+<script src="./app/directives/loading/loading.directive.js"></script>
+
+
 
 
 <body ng-app="naturLife">
 
-<nav></nav>
+    <nav-natur-life></nav-natur-life>
+    <loading></loading>
+    <div ng-view></div>
+    <natur-life-footer></natur-life-footer>
 
-<div ng-view></div>
-
-
-<p>"Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
-    aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
-    Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur
-    sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
 </body>
+
 </html>
