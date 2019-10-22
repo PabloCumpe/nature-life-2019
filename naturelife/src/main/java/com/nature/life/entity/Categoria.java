@@ -17,7 +17,7 @@ public class Categoria {
 	private BigInteger idCategoria;
 	
 	private String nombre;
-	
+	 
 	private String descripcion;
 		
 	public Categoria() {
