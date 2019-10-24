@@ -32,12 +32,9 @@ public class ProductEntity {
 	}
 	
 	
-	public ProductEntity(BigInteger id, String nombre, String descripcion, BigInteger id_categoria, BigInteger id_UniMedida) {
-		this.id = id;
+	public ProductEntity(String nombre, String descripcion) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
-		this.id_categoria = id_categoria;
-		this.id_UniMedida = id_UniMedida;
 	}
 
 
