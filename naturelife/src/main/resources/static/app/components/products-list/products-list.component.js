@@ -1,7 +1,7 @@
 angular.module('productsList')
      .component('productsList', {
           templateUrl: "/app/components/products-list/products-list.template.html",
-          controller: function (productsService, $scope, $rootScope) {
+          controller: function (productsService, $scope, $rootScope, $timeout) {
 
 
                this.$onInit = function () {
@@ -27,6 +27,7 @@ angular.module('productsList')
                $scope.addProductToCart = function (product) {
                     productsService.addProductToCart(product);
                     $scope.products = $scope.loadProducts();
+                   
                }
 
           }

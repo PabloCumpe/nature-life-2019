@@ -169,11 +169,11 @@
 
 <br>
 
-<div id="snackbar">Se agrego el producto al carrito :)</div>
+<div id="snackbar">Se agregó al carrito :)</div>
 
-<div style="margin-left:100px; margin-right:100px;">
+<div style="margin-left:100px; margin-right:100px; min-height: 400px;">
     <div class="row">
-        <div ng-repeat="p in products track by $index" class="col-12 col-md-6 col-lg-3">
+        <div ng-repeat="p in products track by $index" class="col-12 col-md-4 col-lg-4">
 
             <div class="card">
                 <img class="card-img-top" style="border-radius: 10px;"
@@ -183,16 +183,16 @@
 
                     <h4 class="card-title">{{p}}</a></h4>
 
-                    <p class="card-text">Le Lorem Ipsum est simplement du faux texte employé dans la composition et
+                    <p style="font-size:small;">Le Lorem Ipsum est simplement du faux texte employé dans la composition et
                         la
                         mise en page avant impression.</p>
                     <div class="row">
-                        <div class="col-12 col-md-6 col-lg-4">
+                        <div class="col-12 col-md-6 col-lg-5">
                          
                         </div>
 
-                        <div class="col-12 col-md-6 col-lg-8">
-                            <button class="btn btn-success btn-block" onclick="showToast()"
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <button class="btn btn-success btn-block btn-sm" onclick="showToast()"
                                 ng-click="addProductToCart(p)">Agregar al
                                 carrito</button>
                         </div>
