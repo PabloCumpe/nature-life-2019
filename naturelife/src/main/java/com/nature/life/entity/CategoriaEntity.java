@@ -24,10 +24,17 @@ public class CategoriaEntity {
 		
 	}
 	
-	public CategoriaEntity(BigInteger idCategoria, String nombre, String descripcion ) {
-		this.idCategoria = idCategoria;
+	public CategoriaEntity(String nombre, String descripcion ) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
+	}
+
+	public BigInteger getIdCategoria() {
+		return idCategoria;
+	}
+
+	public void setIdCategoria(BigInteger idCategoria) {
+		this.idCategoria = idCategoria;
 	}
 
 	public String getNombre() {
