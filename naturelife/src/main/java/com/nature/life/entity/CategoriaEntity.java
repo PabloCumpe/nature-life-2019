@@ -1,12 +1,17 @@
 package com.nature.life.entity;
 
 import java.math.BigInteger;
+import java.util.ArrayList;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.OneToMany;
+
+import java.util.List;
 
 @Entity(name = "categoria")
 public class CategoriaEntity {
@@ -19,7 +24,22 @@ public class CategoriaEntity {
 	private String nombre;
 	 
 	private String descripcion;
-		
+	
+	//Se agrupan los libros que sean de la categoria this
+	
+	@OneToMany(mappedBy = "categoria", cascade=CascadeType.ALL)
+	private List<ProductEntity> productos =  new ArrayList<>();
+	
+
+
+	public List getProductos() {
+		return productos;
+	}
+
+	public void setProductos(List productos) {
+		this.productos = productos;
+	}
+
 	public CategoriaEntity() {
 		
 	}

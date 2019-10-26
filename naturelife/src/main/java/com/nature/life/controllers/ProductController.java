@@ -10,6 +10,7 @@ import com.nature.life.api.ProductRequest;
 import com.nature.life.api.UserRequest;
 import com.nature.life.entity.ProductEntity;
 import com.nature.life.entity.UserEntity;
+import com.nature.life.services.CategorieService;
 import com.nature.life.services.ProductService;
 
 import java.time.LocalDateTime;
@@ -21,9 +22,11 @@ import java.util.List;
 public class ProductController {
 	
 	private final ProductService productService;
+	private final CategorieService categorieService;
 	
-	public ProductController(ProductService productService) {
+	public ProductController(ProductService productService, CategorieService categorieService) {
 		this.productService = productService;
+		this.categorieService = categorieService;
 		
 	}
 	
@@ -35,9 +38,19 @@ public class ProductController {
     
     
     @PostMapping("/producto")
-    public void createUser(@RequestBody ProductRequest productRequest) {
-        ProductEntity productEntity= new ProductEntity(productRequest.getNombre(),
-        		productRequest.getDescripcion())  ;
+    public void createProduct(@RequestBody ProductRequest productRequest) {
+        
+    	
+    	ProductEntity productEntity= new ProductEntity(productRequest.getNombre(),
+        		productRequest.getDescripcion());
        this.productService.createNewProduct(productEntity);
     }
+
+
+	public CategorieService getCategorieService() {
+		return categorieService;
+	}
+
+    
+
 }
