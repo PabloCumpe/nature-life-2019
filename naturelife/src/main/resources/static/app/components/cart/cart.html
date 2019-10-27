@@ -1,0 +1,139 @@
+<style>
+    .quantity {
+        float: left;
+        margin-right: 15px;
+        background-color: #eee;
+        position: relative;
+        width: 80px;
+        overflow: hidden
+    }
+
+    .quantity input {
+        margin: 0;
+        text-align: center;
+        width: 15px;
+        height: 15px;
+        padding: 0;
+        float: right;
+        color: #000;
+        font-size: 20px;
+        border: 0;
+        outline: 0;
+        background-color: #F6F6F6
+    }
+
+    .quantity input.qty {
+        position: relative;
+        border: 0;
+        width: 100%;
+        height: 40px;
+        padding: 10px 25px 10px 10px;
+        text-align: center;
+        font-weight: 400;
+        font-size: 15px;
+        border-radius: 0;
+        background-clip: padding-box
+    }
+
+    .quantity .minus,
+    .quantity .plus {
+        line-height: 0;
+        background-clip: padding-box;
+        -webkit-border-radius: 0;
+        -moz-border-radius: 0;
+        border-radius: 0;
+        -webkit-background-size: 6px 30px;
+        -moz-background-size: 6px 30px;
+        color: #bbb;
+        font-size: 20px;
+        position: absolute;
+        height: 50%;
+        border: 0;
+        right: 0;
+        padding: 0;
+        width: 25px;
+        z-index: 3
+    }
+
+    .quantity .minus:hover,
+    .quantity .plus:hover {
+        background-color: #dad8da
+    }
+
+    .quantity .minus {
+        bottom: 0
+    }
+
+    .shopping-cart {
+        margin-top: 20px;
+    }
+</style>
+<br>
+<br>
+
+<div class="container">
+
+
+    <div class="card shopping-cart" >
+        <div class="card-header bg-dark text-light">
+            <i class="fa fa-shopping-cart" aria-hidden="true"></i>
+            <span style="font-size: small;">Carrito de compras</span>
+            <a href="/" class="btn btn-info pull-right btn-sm">Volver a los productos</a>
+            <div class="clearfix"></div>
+        </div>
+
+        <div class="card-body">
+
+            <div style="width: 50%; margin: 0 auto;" ng-show="showEmptyCart">
+                <img class="img-responsive"
+                    src="https://www.fesa.com.pa/loginshop/wp-content/uploads/2018/01/carrito_vacio.png">
+            </div>
+
+
+            <div ng-repeat="p in products">
+                <div class="row">
+                    <div class="col-12 col-sm-12 col-md-2 text-center">
+                        <img class="img-responsive" ng-src="data:image/png;base64, {{p.imagen}}" alt="prewiew"
+                            width="120" height="80">
+                    </div>
+                    <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
+                        <h4 class="product-name"><strong>{{p.nombre}}</strong></h4>
+                        <h4>
+                            <small style="font-size: small;">{{p.descripcion}}</small>
+                        </h4>
+                    </div>
+                    <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
+                        <div class="col-3 col-sm-3 col-md-6 text-md-right">
+                            <span style="font-size: small;">Precio: </span><strong>$ {{p.precioUnitario}}</strong>
+                        </div>
+                        <div class="col-4 col-sm-4 col-md-4">
+                            <span style="font-size: small;">Cantidad: </span> {{p.cantidad}}
+                        </div>
+                        <div class="col-2 col-sm-2 col-md-2 text-right">
+                            <button type="button" ng-click="deleteProductFromCart(p)"
+                                class="btn btn-outline-danger btn-xs">
+                                <i class="fa fa-trash" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                </div>
+                <hr>
+
+            </div>
+
+        </div>
+        <div class="card-footer">
+
+            <div class="pull-right" style="margin: 10px">
+                <a href="/checkout" class="btn btn-success pull-right btn-sm">Checkout</a>
+                <div class="pull-right" style="margin: 5px">
+                    Total: $ <b>{{totalPrice}}</b>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<br>
+<br>

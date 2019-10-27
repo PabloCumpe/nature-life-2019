@@ -17,7 +17,8 @@ public class ProductEntity {
     private String nombre;
     private String descripcion;
     private BigDecimal precioUnitario;
-    private String imagen;
+    @Lob
+    private byte[] imagen;
     @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL)
     private List<CartProductEntity> cart = new ArrayList<>();
     @ManyToOne(fetch = FetchType.LAZY)
@@ -31,7 +32,7 @@ public class ProductEntity {
             String nombre,
             String descripcion,
             BigDecimal precioUnitario,
-            String imagen,
+                         byte[] imagen,
             CategoriaEntity categoria) {
         this.id = id;
         this.nombre = nombre;
@@ -90,11 +91,11 @@ public class ProductEntity {
         this.precioUnitario = precioUnitario;
     }
 
-    public String getImagen() {
+    public byte[] getImagen() {
         return imagen;
     }
 
-    public void setImagen(String imagen) {
+    public void setImagen(byte[] imagen) {
         this.imagen = imagen;
     }
 }

@@ -1,1 +1,200 @@
-<h1>{{products}}</h1>
+<style>
+    .bloc_left_price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 150%;
+    }
+
+    .category_block li:hover {
+        background-color: #007bff;
+    }
+
+    .category_block li:hover a {
+        color: #ffffff;
+    }
+
+    .category_block li a {
+        color: #343a40;
+    }
+
+    .add_to_cart_block .price {
+        color: #c01508;
+        text-align: center;
+        font-weight: bold;
+        font-size: 200%;
+        margin-bottom: 0;
+    }
+
+    .add_to_cart_block .price_discounted {
+        color: #343a40;
+        text-align: center;
+        text-decoration: line-through;
+        font-size: 140%;
+    }
+
+    .product_rassurance {
+        padding: 10px;
+        margin-top: 15px;
+        background: #ffffff;
+        border: 1px solid #6c757d;
+        color: #6c757d;
+    }
+
+    .product_rassurance .list-inline {
+        margin-bottom: 0;
+        text-transform: uppercase;
+        text-align: center;
+    }
+
+    .product_rassurance .list-inline li:hover {
+        color: #343a40;
+    }
+
+    .reviews_product .fa-star {
+        color: gold;
+    }
+
+    .pagination {
+        margin-top: 20px;
+    }
+
+    footer {
+        background: #343a40;
+        padding: 40px;
+    }
+
+    footer a {
+        color: #f8f9fa !important
+    }
+
+    #snackbar {
+        visibility: hidden;
+        min-width: 250px;
+        margin-left: -125px;
+        background-color: #333;
+        color: #fff;
+        text-align: center;
+        border-radius: 14px;
+        padding: 23px;
+        position: fixed;
+        z-index: 1;
+        left: 90%;
+        bottom: 30px;
+    }
+
+    #snackbar.show {
+        visibility: visible;
+   
+        -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
+        animation: fadein 0.5s, fadeout 0.5s 2.5s;
+    }
+
+    @-webkit-keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+
+    @keyframes fadein {
+        from {
+            bottom: 0;
+            opacity: 0;
+        }
+
+        to {
+            bottom: 30px;
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+
+    @keyframes fadeout {
+        from {
+            bottom: 30px;
+            opacity: 1;
+        }
+
+        to {
+            bottom: 0;
+            opacity: 0;
+        }
+    }
+    
+  
+</style>
+
+<script>
+
+    function showToast() {
+        var x = document.getElementById("snackbar");
+        x.className = "show";
+        setTimeout(function () { x.className = x.className.replace("show", ""); }, 3000);
+    }
+</script>
+
+<br>
+
+<div id="snackbar">Se agregó al carrito :)</div>
+
+<div style="margin-left:15px; margin-right:15px; min-height: 400px;">
+    <div class="row">
+        <div ng-repeat="p in products track by $index" class="col-12 col-md-4 col-lg-3">
+
+            <div class="card">
+                <img class="card-img-top" style="border-radius: 10px;"
+                    ng-src="data:image/png;base64, {{p.imagen}}" alt="Card image cap">
+                <div class="card-body">
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-5">
+                             <h4><span class="badge badge-info">$ {{p.precioUnitario}}</span></h4>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <p style="font-size:small;padding-top: 6px;">
+                             <span style="font-weight: bold;">Categoria:</span>  {{p.categoria.nombre}}</p>
+                        </div>
+                    </div>
+                   
+
+                    <h4 class="card-title">{{p.nombre}}</a></h4>
+
+                    <p style="font-size:small;">{{p.descripcion}}</p>
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-5">
+                           <div class="quantity">
+                                <input style="border-radius: 5px;" ng-init="cantidad=0" ng-model="cantidad" type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    size="4" name="cantidad">
+                            </div>
+                        </div>
+
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <button class="btn btn-success btn-block btn-sm" onclick="showToast()"
+                                ng-click="addProductToCart(cantidad,p)">Agregar al
+                                carrito</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<br>

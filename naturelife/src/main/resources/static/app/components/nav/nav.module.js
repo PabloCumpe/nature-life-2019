@@ -1,1 +1,1 @@
-angular.module('nav',[]);
+angular.module('navNaturLife',[]);
