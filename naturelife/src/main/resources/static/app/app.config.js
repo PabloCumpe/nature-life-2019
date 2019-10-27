@@ -13,8 +13,8 @@ angular.module("naturLife")
     .when("/cart", {
         template : "<cart></cart>"
     })
-    .when("/checkout", {
-        template : "<h1>check out component</h1>"
+     .when("/checkout", {
+        template : "<resume></resume>"
     })
     .otherwise({
         template : "<h1>NOT COMPONENT MAP FOR THAT URI</h1>"
