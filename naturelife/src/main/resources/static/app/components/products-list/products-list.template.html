@@ -162,19 +162,31 @@
                 <img class="card-img-top" style="border-radius: 10px;"
                     ng-src="data:image/png;base64, {{p.imagen}}" alt="Card image cap">
                 <div class="card-body">
-                    <h4><span class="badge badge-info">$ {{p.precioUnitario}}</span></h4>
+                    <div class="row">
+                        <div class="col-12 col-md-6 col-lg-5">
+                             <h4><span class="badge badge-info">$ {{p.precioUnitario}}</span></h4>
+                        </div>
+                        <div class="col-12 col-md-6 col-lg-7">
+                            <p style="font-size:small;padding-top: 6px;">
+                             <span style="font-weight: bold;">Categoria:</span>  {{p.categoria.nombre}}</p>
+                        </div>
+                    </div>
+                   
 
                     <h4 class="card-title">{{p.nombre}}</a></h4>
 
                     <p style="font-size:small;">{{p.descripcion}}</p>
                     <div class="row">
                         <div class="col-12 col-md-6 col-lg-5">
-                         
+                           <div class="quantity">
+                                <input style="border-radius: 5px;" ng-init="cantidad=0" ng-model="cantidad" type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
+                                    size="4" name="cantidad">
+                            </div>
                         </div>
 
                         <div class="col-12 col-md-6 col-lg-7">
                             <button class="btn btn-success btn-block btn-sm" onclick="showToast()"
-                                ng-click="addProductToCart(p)">Agregar al
+                                ng-click="addProductToCart(cantidad,p)">Agregar al
                                 carrito</button>
                         </div>
                     </div>

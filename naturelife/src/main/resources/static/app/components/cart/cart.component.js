@@ -17,7 +17,7 @@ angular.module('cart')
 
          $scope.calculateTotalPrice = function () {
             $scope.totalPrice = productsService.getCart().reduce(function (accumulator, cartProduct) {
-               return accumulator + cartProduct.precioUnitario;
+               return accumulator + (cartProduct.precioUnitario*cartProduct.cantidad);
             }, 0);
          }
 

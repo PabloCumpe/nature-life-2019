@@ -74,7 +74,7 @@
 <div class="container">
 
 
-    <div class="card shopping-cart" style="min-height: 700px;">
+    <div class="card shopping-cart" >
         <div class="card-header bg-dark text-light">
             <i class="fa fa-shopping-cart" aria-hidden="true"></i>
             <span style="font-size: small;">Carrito de compras</span>
@@ -86,15 +86,15 @@
 
             <div style="width: 50%; margin: 0 auto;" ng-show="showEmptyCart">
                 <img class="img-responsive"
-                src="https://www.fesa.com.pa/loginshop/wp-content/uploads/2018/01/carrito_vacio.png">
+                    src="https://www.fesa.com.pa/loginshop/wp-content/uploads/2018/01/carrito_vacio.png">
             </div>
-           
+
 
             <div ng-repeat="p in products">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-2 text-center">
-                        <img class="img-responsive" ng-src="data:image/png;base64, {{p.imagen}}" alt="prewiew" width="120"
-                            height="80">
+                        <img class="img-responsive" ng-src="data:image/png;base64, {{p.imagen}}" alt="prewiew"
+                            width="120" height="80">
                     </div>
                     <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
                         <h4 class="product-name"><strong>{{p.nombre}}</strong></h4>
@@ -103,14 +103,11 @@
                         </h4>
                     </div>
                     <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
-                        <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                            <h6><strong>$ {{p.precioUnitario}}</strong></h6>
+                        <div class="col-3 col-sm-3 col-md-6 text-md-right">
+                            <span style="font-size: small;">Precio: </span><strong>$ {{p.precioUnitario}}</strong>
                         </div>
                         <div class="col-4 col-sm-4 col-md-4">
-                            <div class="quantity">
-                                <input type="number" step="1" max="99" min="1" value="1" title="Qty" class="qty"
-                                    size="4">
-                            </div>
+                            <span style="font-size: small;">Cantidad: </span> {{p.cantidad}}
                         </div>
                         <div class="col-2 col-sm-2 col-md-2 text-right">
                             <button type="button" ng-click="deleteProductFromCart(p)"
@@ -130,8 +127,8 @@
 
             <div class="pull-right" style="margin: 10px">
                 <a href="/checkout" class="btn btn-success pull-right btn-sm">Checkout</a>
-                <div class="pull-right" style="margin: 5px" >
-                    Total: $ <b >{{totalPrice}}</b>
+                <div class="pull-right" style="margin: 5px">
+                    Total: $ <b>{{totalPrice}}</b>
                 </div>
             </div>
         </div>

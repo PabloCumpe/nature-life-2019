@@ -25,7 +25,8 @@ angular.module('productsList')
                          });
                }
 
-               $scope.addProductToCart = function (product) {
+               $scope.addProductToCart = function (cantidad,product) {
+                    product.cantidad=cantidad;
                     productsService.addProductToCart(product);
                     $scope.products = $scope.loadProducts();
 
