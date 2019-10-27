@@ -2,6 +2,8 @@ package com.nature.life.entity;
 
 import javax.persistence.*;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "categoria")
 public class CategoriaEntity {
@@ -12,7 +14,12 @@ public class CategoriaEntity {
 	private BigInteger id;
 	private String nombre;
 	private String descripcion;
-
+	
+	@OneToMany(mappedBy = "categoria", cascade=CascadeType.ALL)
+	private List<ProductEntity> productos =  new ArrayList<>();
+	
+	
+	
 	protected CategoriaEntity() {
 	}
 
