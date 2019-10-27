@@ -13,8 +13,8 @@ angular
 
         this.deleteProductFromCart = function (product) {
             var cart = this.getCart();
-            cart.pop(product);
-            this.saveCart(cart);
+            var newCart = cart.filter(function(val) { return val.id != product.id; });
+            this.saveCart(newCart);
         }
 
         this.getApiProducts = function () {

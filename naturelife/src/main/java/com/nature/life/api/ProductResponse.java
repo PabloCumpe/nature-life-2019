@@ -18,6 +18,7 @@ public class ProductResponse {
 			BigDecimal precioUnitario,
 			String imagen,
 			CategoryResponse categoria) {
+		this.id= id;
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;

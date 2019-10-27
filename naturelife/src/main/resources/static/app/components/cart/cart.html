@@ -93,18 +93,18 @@
             <div ng-repeat="p in products">
                 <div class="row">
                     <div class="col-12 col-sm-12 col-md-2 text-center">
-                        <img class="img-responsive" src="http://placehold.it/120x80" alt="prewiew" width="120"
+                        <img class="img-responsive" ng-src="data:image/png;base64, {{p.imagen}}" alt="prewiew" width="120"
                             height="80">
                     </div>
                     <div class="col-12 text-sm-center col-sm-12 text-md-left col-md-6">
-                        <h4 class="product-name"><strong>{{p}}</strong></h4>
+                        <h4 class="product-name"><strong>{{p.nombre}}</strong></h4>
                         <h4>
-                            <small style="font-size: small;">Product description</small>
+                            <small style="font-size: small;">{{p.descripcion}}</small>
                         </h4>
                     </div>
                     <div class="col-12 col-sm-12 text-sm-center col-md-4 text-md-right row">
                         <div class="col-3 col-sm-3 col-md-6 text-md-right" style="padding-top: 5px">
-                            <h6><strong>25.00 </strong></h6>
+                            <h6><strong>$ {{p.precioUnitario}}</strong></h6>
                         </div>
                         <div class="col-4 col-sm-4 col-md-4">
                             <div class="quantity">
@@ -130,8 +130,8 @@
 
             <div class="pull-right" style="margin: 10px">
                 <a href="/checkout" class="btn btn-success pull-right btn-sm">Checkout</a>
-                <div class="pull-right" style="margin: 5px">
-                    Total: <b>50.00€</b>
+                <div class="pull-right" style="margin: 5px" >
+                    Total: $ <b >{{totalPrice}}</b>
                 </div>
             </div>
         </div>

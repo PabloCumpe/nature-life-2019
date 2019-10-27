@@ -30,7 +30,7 @@ public class ProductController {
                         e.getNombre(),
                         e.getDescripcion(),
                         e.getPrecioUnitario(),
-                        e.getImagen(),
+                        new String(e.getImagen()),
                         new CategoryResponse(e.getCategoria().getNombre(), e.getCategoria().getDescripcion())))
                 .collect(Collectors.toList());
     }
@@ -42,7 +42,7 @@ public class ProductController {
                 productRequest.getNombre(),
                 productRequest.getDescripcion(),
                 productRequest.getPrecioUnitario(),
-                productRequest.getImagen(),
+                productRequest.getImagen().getBytes(),
                 null);
 
         this.productService.createNewProduct(productRequest.getIdCategoria(), productEntity);

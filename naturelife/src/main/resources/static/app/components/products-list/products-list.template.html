@@ -68,45 +68,28 @@
         color: #f8f9fa !important
     }
 
-    /* The snackbar - position it at the bottom and in the middle of the screen */
     #snackbar {
         visibility: hidden;
-        /* Hidden by default. Visible on click */
         min-width: 250px;
-        /* Set a default minimum width */
         margin-left: -125px;
-        /* Divide value of min-width by 2 */
         background-color: #333;
-        /* Black background color */
         color: #fff;
-        /* White text color */
         text-align: center;
-        /* Centered text */
         border-radius: 14px;
-        /* Rounded borders */
         padding: 23px;
-        /* Padding */
         position: fixed;
-        /* Sit on top of the screen */
         z-index: 1;
-        /* Add a z-index if needed */
         left: 90%;
-        /* Center the snackbar */
         bottom: 30px;
-        /* 30px from the bottom */
     }
 
-    /* Show the snackbar when clicking on a button (class added with JavaScript) */
     #snackbar.show {
         visibility: visible;
-        /* Show the snackbar */
-        /* Add animation: Take 0.5 seconds to fade in and out the snackbar.
-  However, delay the fade out process for 2.5 seconds */
+   
         -webkit-animation: fadein 0.5s, fadeout 0.5s 2.5s;
         animation: fadein 0.5s, fadeout 0.5s 2.5s;
     }
 
-    /* Animations to fade the snackbar in and out */
     @-webkit-keyframes fadein {
         from {
             bottom: 0;
@@ -177,15 +160,13 @@
 
             <div class="card">
                 <img class="card-img-top" style="border-radius: 10px;"
-                    src="https://www.w3schools.com/w3css/img_snowtops.jpg" alt="Card image cap">
+                    ng-src="data:image/png;base64, {{p.imagen}}" alt="Card image cap">
                 <div class="card-body">
-                    <h4><span class="badge badge-info">$ 99.00</span></h4>
+                    <h4><span class="badge badge-info">$ {{p.precioUnitario}}</span></h4>
 
-                    <h4 class="card-title">{{p}}</a></h4>
+                    <h4 class="card-title">{{p.nombre}}</a></h4>
 
-                    <p style="font-size:small;">Le Lorem Ipsum est simplement du faux texte employé dans la composition et
-                        la
-                        mise en page avant impression.</p>
+                    <p style="font-size:small;">{{p.descripcion}}</p>
                     <div class="row">
                         <div class="col-12 col-md-6 col-lg-5">
                          
