@@ -1,6 +1,6 @@
 package com.nature.life.api;
 //test commit nico
-public class UserRequest {
+public class CustomerRequest {
 
 
     private String userName;
@@ -8,7 +8,7 @@ public class UserRequest {
     private String mail;
     private String password;
 
-    public UserRequest(String userName, String userLastName, String mail, String password) {
+    public CustomerRequest(String userName, String userLastName, String mail, String password) {
         this.userName = userName;
         this.userLastName = userLastName;
         this.mail = mail;

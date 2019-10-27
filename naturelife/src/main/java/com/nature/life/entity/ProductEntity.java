@@ -1,88 +1,100 @@
 package com.nature.life.entity;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.*;
 
 @Entity(name = "productos")
 public class ProductEntity {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",columnDefinition="bigint")
-	private BigInteger id;
-	
-	private String nombre;
-	
-	private String descripcion;
-	
-	
-	@ManyToOne(fetch = FetchType.LAZY)
-	@JoinColumn(name = "CATEGORIA_ID")
-	private CategoriaEntity categoria;
+    @Column(name = "id", columnDefinition = "bigint")
+    private BigInteger id;
+    private String nombre;
+    private String descripcion;
+    private BigDecimal precioUnitario;
+    private String imagen;
+    @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL)
+    private List<CartProductEntity> cart = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private CategoriaEntity categoria;
 
-	
-	
-	
-	
-	public CategoriaEntity getCategoria() {
-		return categoria;
-	}
+    protected ProductEntity() {
+    }
 
+    public ProductEntity(BigInteger id,
+            String nombre,
+            String descripcion,
+            BigDecimal precioUnitario,
+            String imagen,
+            CategoriaEntity categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioUnitario = precioUnitario;
+        this.imagen = imagen;
+        this.cart = cart;
+        this.categoria = categoria;
+    }
 
-	public void setCategoria(CategoriaEntity categoria) {
-		this.categoria = categoria;
-	}
+    public List<CartProductEntity> getCart() {
+        return cart;
+    }
 
+    public void setCart(List<CartProductEntity> cart) {
+        this.cart = cart;
+    }
 
-	public ProductEntity() {
-		
-	}
-	
-	
-	public ProductEntity(String nombre, String descripcion, CategoriaEntity categoria) {
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.categoria = categoria;
-	}
+    public BigInteger getId() {
+        return id;
+    }
 
+    public void setId(BigInteger id) {
+        this.id = id;
+    }
 
+    public String getNombre() {
+        return nombre;
+    }
 
-	public BigInteger getId() {
-		return id;
-	}
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
+    public String getDescripcion() {
+        return descripcion;
+    }
 
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
+    public CategoriaEntity getCategoria() {
+        return categoria;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
+    }
 
+    public BigDecimal getPrecioUnitario() {
+        return precioUnitario;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
 
+    public String getImagen() {
+        return imagen;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
-
-
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
-	
-	
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }

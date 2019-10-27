@@ -7,7 +7,6 @@ import java.util.List;
 import org.springframework.stereotype.Service;
 
 import com.nature.life.entity.CategoriaEntity;
-import com.nature.life.entity.UserEntity;
 import com.nature.life.repository.CategorieRepository;
 
 

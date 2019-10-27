@@ -3,24 +3,24 @@ package com.nature.life.api;
 import java.math.BigDecimal;
 import java.math.BigInteger;
 
-public class ProductRequest {
+public class ProductResponse {
 
 	private String nombre;
 	private String descripcion;
 	private BigDecimal precioUnitario;
 	private String imagen;
-	private BigInteger idCategoria;
+	private CategoryResponse categoria;
 
-	public ProductRequest(String nombre,
+	public ProductResponse(String nombre,
 			String descripcion,
 			BigDecimal precioUnitario,
 			String imagen,
-			BigInteger idCategoria) {
+			CategoryResponse categoria) {
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precioUnitario = precioUnitario;
 		this.imagen = imagen;
-		this.idCategoria = idCategoria;
+		this.categoria = categoria;
 	}
 
 	public String getNombre() {
@@ -55,11 +55,11 @@ public class ProductRequest {
 		this.imagen = imagen;
 	}
 
-	public BigInteger getIdCategoria() {
-		return idCategoria;
+	public CategoryResponse getCategoria() {
+		return categoria;
 	}
 
-	public void setIdCategoria(BigInteger idCategoria) {
-		this.idCategoria = idCategoria;
+	public void setCategoria(CategoryResponse categoria) {
+		this.categoria = categoria;
 	}
 }

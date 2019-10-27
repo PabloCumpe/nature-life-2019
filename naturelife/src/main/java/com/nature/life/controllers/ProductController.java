@@ -1,56 +1,50 @@
 package com.nature.life.controllers;
 
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-
+import com.nature.life.api.CategoryResponse;
 import com.nature.life.api.ProductRequest;
-import com.nature.life.api.UserRequest;
+import com.nature.life.api.ProductResponse;
 import com.nature.life.entity.ProductEntity;
-import com.nature.life.entity.UserEntity;
-import com.nature.life.services.CategorieService;
 import com.nature.life.services.ProductService;
+import org.springframework.web.bind.annotation.*;
 
-import java.time.LocalDateTime;
-import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping("/products")
 public class ProductController {
-	
-	private final ProductService productService;
-	private final CategorieService categorieService;
-	
-	public ProductController(ProductService productService, CategorieService categorieService) {
-		this.productService = productService;
-		this.categorieService = categorieService;
-		
-	}
-	
-	
+
+    private final ProductService productService;
+
+    public ProductController(ProductService productService) {
+        this.productService = productService;
+
+    }
+
+
     @GetMapping
-    public List<String> getAllProducts() {
-        return Arrays.asList("product1", "product2", "product3", "product4", "product5", "product6");
+    public List<ProductResponse> getProductsList() {
+        List<ProductEntity> allProducts = this.productService.getAllProducts();
+        return allProducts.stream()
+                .map(e -> new ProductResponse(e.getNombre(),
+                        e.getDescripcion(),
+                        e.getPrecioUnitario(),
+                        e.getImagen(),
+                        new CategoryResponse(e.getCategoria().getNombre(), e.getCategoria().getDescripcion())))
+                .collect(Collectors.toList());
     }
-    
-    
-    @PostMapping("/producto")
+
+    @PostMapping
     public void createProduct(@RequestBody ProductRequest productRequest) {
-        
-    	
-    	ProductEntity productEntity= new ProductEntity(productRequest.getNombre(),
-        		productRequest.getDescripcion());
-       this.productService.createNewProduct(productEntity);
+
+        ProductEntity productEntity = new ProductEntity(null,
+                productRequest.getNombre(),
+                productRequest.getDescripcion(),
+                productRequest.getPrecioUnitario(),
+                productRequest.getImagen(),
+                null);
+
+        this.productService.createNewProduct(productRequest.getIdCategoria(), productEntity);
     }
-
-
-	public CategorieService getCategorieService() {
-		return categorieService;
-	}
-
-    
 
 }
