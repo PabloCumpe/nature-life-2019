@@ -26,7 +26,8 @@ public class ProductController {
     public List<ProductResponse> getProductsList() {
         List<ProductEntity> allProducts = this.productService.getAllProducts();
         return allProducts.stream()
-                .map(e -> new ProductResponse(e.getNombre(),
+                .map(e -> new ProductResponse(e.getId(),
+                        e.getNombre(),
                         e.getDescripcion(),
                         e.getPrecioUnitario(),
                         e.getImagen(),

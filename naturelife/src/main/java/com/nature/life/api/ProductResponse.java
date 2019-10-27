@@ -5,13 +5,15 @@ import java.math.BigInteger;
 
 public class ProductResponse {
 
+	private BigInteger id;
 	private String nombre;
 	private String descripcion;
 	private BigDecimal precioUnitario;
 	private String imagen;
 	private CategoryResponse categoria;
 
-	public ProductResponse(String nombre,
+	public ProductResponse(BigInteger id,
+			String nombre,
 			String descripcion,
 			BigDecimal precioUnitario,
 			String imagen,
@@ -21,6 +23,14 @@ public class ProductResponse {
 		this.precioUnitario = precioUnitario;
 		this.imagen = imagen;
 		this.categoria = categoria;
+	}
+
+	public BigInteger getId() {
+		return id;
+	}
+
+	public void setId(BigInteger id) {
+		this.id = id;
 	}
 
 	public String getNombre() {
