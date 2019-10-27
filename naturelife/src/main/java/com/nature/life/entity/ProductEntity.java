@@ -1,95 +1,100 @@
 package com.nature.life.entity;
 
+import java.math.BigDecimal;
 import java.math.BigInteger;
+import java.util.ArrayList;
+import java.util.List;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity(name = "productos")
 public class ProductEntity {
-	
-	@Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name="id",columnDefinition="bigint")
-	private BigInteger id;
-	
-	private String nombre;
-	
-	private String descripcion;
-	
-	private BigInteger id_categoria;
-	
-	private BigInteger id_UniMedida;
-	
-	
-	
-	
-	public ProductEntity() {
-		
-	}
-	
-	
-	public ProductEntity(BigInteger id, String nombre, String descripcion, BigInteger id_categoria, BigInteger id_UniMedida) {
-		this.id = id;
-		this.nombre = nombre;
-		this.descripcion = descripcion;
-		this.id_categoria = id_categoria;
-		this.id_UniMedida = id_UniMedida;
-	}
+    @Column(name = "id", columnDefinition = "bigint")
+    private BigInteger id;
+    private String nombre;
+    private String descripcion;
+    private BigDecimal precioUnitario;
+    private String imagen;
+    @OneToMany(mappedBy = "productEntity", cascade = CascadeType.ALL)
+    private List<CartProductEntity> cart = new ArrayList<>();
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "id_categoria")
+    private CategoriaEntity categoria;
 
+    protected ProductEntity() {
+    }
 
+    public ProductEntity(BigInteger id,
+            String nombre,
+            String descripcion,
+            BigDecimal precioUnitario,
+            String imagen,
+            CategoriaEntity categoria) {
+        this.id = id;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.precioUnitario = precioUnitario;
+        this.imagen = imagen;
+        this.cart = cart;
+        this.categoria = categoria;
+    }
 
-	public BigInteger getId() {
-		return id;
-	}
+    public List<CartProductEntity> getCart() {
+        return cart;
+    }
 
+    public void setCart(List<CartProductEntity> cart) {
+        this.cart = cart;
+    }
 
-	public void setId(BigInteger id) {
-		this.id = id;
-	}
+    public BigInteger getId() {
+        return id;
+    }
 
+    public void setId(BigInteger id) {
+        this.id = id;
+    }
 
-	public String getNombre() {
-		return nombre;
-	}
+    public String getNombre() {
+        return nombre;
+    }
 
+    public void setNombre(String nombre) {
+        this.nombre = nombre;
+    }
 
-	public void setNombre(String nombre) {
-		this.nombre = nombre;
-	}
+    public String getDescripcion() {
+        return descripcion;
+    }
 
+    public void setDescripcion(String descripcion) {
+        this.descripcion = descripcion;
+    }
 
-	public String getDescripcion() {
-		return descripcion;
-	}
+    public CategoriaEntity getCategoria() {
+        return categoria;
+    }
 
+    public void setCategoria(CategoriaEntity categoria) {
+        this.categoria = categoria;
+    }
 
-	public void setDescripcion(String descripcion) {
-		this.descripcion = descripcion;
-	}
+    public BigDecimal getPrecioUnitario() {
+        return precioUnitario;
+    }
 
+    public void setPrecioUnitario(BigDecimal precioUnitario) {
+        this.precioUnitario = precioUnitario;
+    }
 
-	public BigInteger getId_categoria() {
-		return id_categoria;
-	}
+    public String getImagen() {
+        return imagen;
+    }
 
-
-	public void setId_categoria(BigInteger id_categoria) {
-		this.id_categoria = id_categoria;
-	}
-
-
-	public BigInteger getId_UniMedida() {
-		return id_UniMedida;
-	}
-
-
-	public void setId_UniMedida(BigInteger id_UniMedida) {
-		this.id_UniMedida = id_UniMedida;
-	}
-	
-	
+    public void setImagen(String imagen) {
+        this.imagen = imagen;
+    }
 }
