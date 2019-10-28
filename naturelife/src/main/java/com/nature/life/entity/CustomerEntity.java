@@ -3,6 +3,8 @@ package com.nature.life.entity;
 import javax.persistence.*;
 import java.math.BigInteger;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity(name = "clientes")
 public class CustomerEntity {
@@ -21,7 +23,11 @@ public class CustomerEntity {
     private String telefono;
     private String cuit;
     private String dni;
-
+	
+    @OneToMany(mappedBy = "customer", cascade=CascadeType.ALL)
+	private List<PurchaseEntity> compras =  new ArrayList<>();
+    
+    
     public CustomerEntity(BigInteger id,
             String razonSocial,
             String mail,

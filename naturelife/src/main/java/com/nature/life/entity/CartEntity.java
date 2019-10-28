@@ -14,7 +14,8 @@ public class CartEntity {
     private BigInteger id;
     @OneToMany(mappedBy = "cartEntity", cascade = CascadeType.ALL)
     private List<CartProductEntity> productos;
-
+    @OneToOne(mappedBy = "cart", fetch = FetchType.LAZY)
+    private PurchaseEntity purchase;
 
     protected CartEntity() {
     }
