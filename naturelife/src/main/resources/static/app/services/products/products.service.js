@@ -17,6 +17,10 @@ angular
             this.saveCart(newCart);
         }
 
+         this.deleteAllCartProducts = function () {
+             window.localStorage.setItem('cart', JSON.stringify([]));
+        }
+
         this.getApiProducts = function () {
             return $http.get(urlBase + '/products');
         }

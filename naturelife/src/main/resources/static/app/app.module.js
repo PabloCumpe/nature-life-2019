@@ -7,6 +7,7 @@ angular.module("naturLife", [
     "angularCSS",
     "naturLifeFooter",
     "cart",
+    "resume",
 
     "loading"
 
