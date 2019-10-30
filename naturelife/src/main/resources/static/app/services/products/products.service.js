@@ -5,6 +5,23 @@ angular
 
         var urlBase = $location.protocol() + "://" + $location.host() + ":" + $location.port();
 
+        this.purchaseCart = function () {
+
+            var productos = this.getCart().map(function (e) {
+                return {
+                    idProducto: e.id,
+                    cantidad: e.cantidad
+                }
+            });
+
+            var request = {
+                productos: productos,
+                idMedioDePago: 1
+            }
+
+            return $http.post(urlBase + '/purchase', request)
+        }
+
         this.addProductToCart = function (product) {
             var cart = this.getCart();
             cart.push(product);
@@ -13,12 +30,12 @@ angular
 
         this.deleteProductFromCart = function (product) {
             var cart = this.getCart();
-            var newCart = cart.filter(function(val) { return val.id != product.id; });
+            var newCart = cart.filter(function (val) { return val.id != product.id; });
             this.saveCart(newCart);
         }
 
-         this.deleteAllCartProducts = function () {
-             window.localStorage.setItem('cart', JSON.stringify([]));
+        this.deleteAllCartProducts = function () {
+            window.localStorage.setItem('cart', JSON.stringify([]));
         }
 
         this.getApiProducts = function () {

@@ -8,6 +8,7 @@ import com.nature.life.services.ProductService;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.stream.Collectors;
 
 @RestController
@@ -30,7 +31,7 @@ public class ProductController {
                         e.getNombre(),
                         e.getDescripcion(),
                         e.getPrecioUnitario(),
-                        new String(e.getImagen()),
+                        Objects.nonNull(e.getImagen()) ? new String(e.getImagen()) : null,
                         new CategoryResponse(e.getCategoria().getNombre(), e.getCategoria().getDescripcion())))
                 .collect(Collectors.toList());
     }

@@ -5,7 +5,9 @@ angular.module('productsList')
 
 
                this.$onInit = function () {
-                    $scope.products = $scope.loadProducts();
+                    $timeout(function () {
+                         $scope.products = $scope.loadProducts();
+                    }, 100);
 
                }
 
@@ -25,8 +27,8 @@ angular.module('productsList')
                          });
                }
 
-               $scope.addProductToCart = function (cantidad,product) {
-                    product.cantidad=cantidad;
+               $scope.addProductToCart = function (cantidad, product) {
+                    product.cantidad = cantidad;
                     productsService.addProductToCart(product);
                     $scope.products = $scope.loadProducts();
 

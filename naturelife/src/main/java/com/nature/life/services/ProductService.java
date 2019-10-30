@@ -35,6 +35,10 @@ public class ProductService {
 		return this.productRepository.findAll();
 	}
 
+    public ProductEntity getProductsById(BigInteger productId) {
+        return this.productRepository.findById(productId).orElseThrow(()->new NaturLifeException("error"));
+
+    }
 
 
 }

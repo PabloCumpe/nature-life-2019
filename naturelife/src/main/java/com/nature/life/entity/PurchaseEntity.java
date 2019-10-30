@@ -97,8 +97,19 @@ public class PurchaseEntity {
 		this.customer = customer;
 	}
 
+	public CartEntity getCart() {
+		return cart;
+	}
 
-	
-	
-	
+	public void setCart(CartEntity cart) {
+		this.cart = cart;
+	}
+
+	public PaymentMethodEntity getPaymentMethod() {
+		return paymentMethod;
+	}
+
+	public void setPaymentMethod(PaymentMethodEntity paymentMethod) {
+		this.paymentMethod = paymentMethod;
+	}
 }

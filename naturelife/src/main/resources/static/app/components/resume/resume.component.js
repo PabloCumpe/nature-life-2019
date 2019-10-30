@@ -1,7 +1,7 @@
 angular.module('resume')
      .component('resume', {
           templateUrl: "/app/components/resume/resume.template.html",
-          controller: function (productsService, $scope, $location) {
+          controller: function (productsService, $scope, $location, $rootScope, $http, $location) {
 
 
                this.$onInit = function () {
@@ -13,7 +13,7 @@ angular.module('resume')
                          $location.url('/')
                          return;
                     }
-                    $scope.showResume = true;
+                    $scope.getLoggedCustomerInfo();
                     $scope.products = cartProducts;
                     $scope.totalPrice = cartProducts.reduce(function (accumulator, cartProduct) {
                          return accumulator + (cartProduct.precioUnitario * cartProduct.cantidad);
@@ -22,12 +22,40 @@ angular.module('resume')
 
                }
 
-               $scope.buy = function () {
-                    var productsToBuy = productsService.getCart();
-                    productsService.deleteAllCartProducts();
-                    $scope.showSucessBuy = true;
-                    $scope.showResume = false;
+               $scope.getLoggedCustomerInfo = function () {
+                    var urlBase = $location.protocol() + "://" + $location.host() + ":" + $location.port();
+                    $rootScope.$emit('show-loading', 'Emit!');
 
+                    $http.get(urlBase + '/customer').then(
+                         function (response) {
+                              $scope.customerData = response.data;
+                              $rootScope.$emit('hide-loading', 'Emit!');
+                              $scope.showResume = true;
+
+                         }, function (error) {
+                              $rootScope.$emit('hide-loading', 'Emit!');
+                              alert('Error :(');
+                         });
+               }
+
+               $scope.buy = function () {
+                    $scope.showResume = false;
+                    $rootScope.$emit('show-loading', 'Emit!');
+                    productsService.purchaseCart().then(
+                         function (response) {
+                              productsService.deleteAllCartProducts();
+                              $scope.showSucessBuy = true;
+                              $scope.showResume = false;
+                              $rootScope.$emit('hide-loading', 'Emit!');
+
+
+                         }, function (error) {
+                              $rootScope.$emit('hide-loading', 'Emit!');
+                              $scope.showResume = true;
+                              alert('Error :(');
+
+
+                         });
                }
 
 
