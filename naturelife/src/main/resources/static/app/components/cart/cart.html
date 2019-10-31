@@ -126,7 +126,9 @@
         <div class="card-footer">
 
             <div class="pull-right" style="margin: 10px">
-                <a href="/checkout" class="btn btn-success pull-right btn-sm">Checkout</a>
+                <button type="button" ng-show="!showEmptyCart">
+                 	<a href="/checkout" class="btn btn-success pull-right btn-sm">Checkout</a>
+                  </button>
                 <div class="pull-right" style="margin: 5px">
                     Total: $ <b>{{totalPrice}}</b>
                 </div>
