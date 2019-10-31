@@ -7,6 +7,7 @@ angular.module('resume')
                this.$onInit = function () {
                     $scope.showSucessBuy = false;
                     $scope.showResume = false;
+                    $scope.enableBuyButton = false;
 
                     var cartProducts = productsService.getCart();
                     if (!cartProducts || !cartProducts.length > 0) {
@@ -21,6 +22,15 @@ angular.module('resume')
 
 
                }
+
+               $scope.enableBuy = function () {
+                    if(!$scope.medioPago){
+                         return true;
+                    }else{
+                         return false;
+                    }
+               }
+
 
                $scope.getLoggedCustomerInfo = function () {
                     var urlBase = $location.protocol() + "://" + $location.host() + ":" + $location.port();
