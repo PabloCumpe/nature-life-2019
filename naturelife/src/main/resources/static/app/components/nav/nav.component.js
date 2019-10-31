@@ -3,8 +3,12 @@ angular.module('navNaturLife')
 
       templateUrl: "/app/components/nav/nav.template.html",
 
-      controller: function () {
+      controller: function ($rootScope,$scope) {
 
+
+         $scope.findProducts = function (name) {
+            $rootScope.$emit('findProducts', name);
+         }
 
       }
    });
