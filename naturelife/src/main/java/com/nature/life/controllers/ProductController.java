@@ -24,8 +24,8 @@ public class ProductController {
 
 
     @GetMapping
-    public List<ProductResponse> getProductsList() {
-        List<ProductEntity> allProducts = this.productService.getAllProducts();
+    public List<ProductResponse> getProductsList(@RequestParam(required = false)  String name) {
+        List<ProductEntity> allProducts = this.productService.getProducts(name);
         return allProducts.stream()
                 .map(e -> new ProductResponse(e.getId(),
                         e.getNombre(),

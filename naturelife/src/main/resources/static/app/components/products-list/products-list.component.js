@@ -11,15 +11,20 @@ angular.module('productsList')
 
                }
 
-               $scope.loadProducts = function () {
+               $rootScope.$on('findProducts', function (event, data) {
+                    $scope.products = [];
+                    $scope.loadProducts(data);
+               });
+
+
+               $scope.loadProducts = function (name) {
                     $rootScope.$emit('show-loading', 'Emit!');
-                    productsService.getApiProducts().then(
+                    productsService.getApiProducts(name).then(
                          function (response) {
                               var apiProducts = response.data;
                               var cartProducts = productsService.getCart().map(e => e.id);
                               $scope.products = apiProducts.filter(e => !cartProducts.includes(e.id));
                               $rootScope.$emit('hide-loading', 'Emit!');
-
                          }, function (error) {
                               alert('Error :(');
                               $rootScope.$emit('hide-loading', 'Emit!');

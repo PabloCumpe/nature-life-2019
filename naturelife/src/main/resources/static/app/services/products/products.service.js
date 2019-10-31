@@ -38,8 +38,12 @@ angular
             window.localStorage.setItem('cart', JSON.stringify([]));
         }
 
-        this.getApiProducts = function () {
-            return $http.get(urlBase + '/products');
+        this.getApiProducts = function (name) {
+            if (name) {
+                return $http.get(urlBase + '/products?name=' + name);
+            } else {
+                return $http.get(urlBase + '/products');
+            }
         }
 
         this.getCart = function () {

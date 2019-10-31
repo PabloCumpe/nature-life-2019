@@ -9,6 +9,7 @@ import com.nature.life.repository.ProductRepository;
 
 import java.math.BigInteger;
 import java.util.List;
+import java.util.Objects;
 
 @Service
 public class ProductService {
@@ -31,9 +32,16 @@ public class ProductService {
         this.productRepository.save(productEntity);
     }
 
-	public List<ProductEntity> getAllProducts() {
+	public List<ProductEntity> getProducts(String name) {
+        if (Objects.nonNull(name)){
+            return this.productRepository.searchProductsByName(name);
+        }
 		return this.productRepository.findAll();
 	}
+
+    public List<ProductEntity> getProductsByName(String name) {
+        return this.productRepository.searchProductsByName(name);
+    }
 
     public ProductEntity getProductsById(BigInteger productId) {
         return this.productRepository.findById(productId).orElseThrow(()->new NaturLifeException("error"));
