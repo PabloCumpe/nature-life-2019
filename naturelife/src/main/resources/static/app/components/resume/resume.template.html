@@ -86,7 +86,7 @@
 
     <h2>Resumen compra</h2>
     <div class="row">
-        <div class="col-12 col-sm-12 col-md-6 col-lg-8">
+        <div class="col-12 col-sm-12 col-md-6 col-lg-6">
             <div class="card shopping-cart">
                 <div class="card-header bg-dark text-light">
                     <span style="font-size: small;">Retiro</span>
@@ -100,7 +100,24 @@
         </div>
         <div class="col-12 col-sm-12 col-md-6 col-lg-4">
             <div class="card shopping-cart">
-                <button ng-click="buy()" class="btn btn-success pull-right btn-lg">Comprar</button>
+                <div class="card-header bg-dark text-light">
+                    <span style="font-size: small;">Medio de Pago</span>
+                    <div class="clearfix"></div>
+                </div>
+
+                <div class="card-body">
+                    <input ng-model ="medioPago" type="radio" name="medioPago" value="1" >
+                    <label for="sad"><img src="./app/assets/images/mercadopago.png" width="80" height="20"alt="I'm sad" /></label>
+
+                    <br><br>
+                    <input ng-model ="medioPago" type="radio" name="medioPago" value="2" > Efectivo
+
+                </div>
+            </div>
+        </div>
+        <div class="col-12 col-sm-12 col-md-6 col-lg-2">
+            <div class="card shopping-cart">
+                <button ng-click="buy(medioPago)" class="btn btn-success pull-right btn-lg">Comprar</button>
             </div>
         </div>
     </div>
@@ -217,7 +234,7 @@
         <br>
 
 
-   <a  href="/" class="btn btn-success pull-right btn-lg">Seguir comprando</a>
+        <a href="/" class="btn btn-success pull-right btn-lg">Seguir comprando</a>
 
 
 </div>

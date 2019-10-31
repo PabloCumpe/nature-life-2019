@@ -3,7 +3,9 @@ package com.nature.life.services;
 import com.nature.life.api.PurchaseProductRequest;
 import com.nature.life.api.PurchaseRequest;
 import com.nature.life.entity.*;
+import com.nature.life.exceptions.NaturLifeException;
 import com.nature.life.repository.CartRepository;
+import com.nature.life.repository.PaymentMethodRepository;
 import com.nature.life.repository.PurchaseRepository;
 import org.springframework.stereotype.Service;
 
@@ -19,16 +21,18 @@ public class PurchaseService {
     private final CustomerService userService;
     private final ProductService productService;
     private final CartRepository cartRepository;
+    private final PaymentMethodRepository paymentMethodRepository;
 
     private static final String STATE_FINISHED = "FINALIZADO";
     private static final String MONEDA_ARGENTINA = "ARS";
 
     public PurchaseService(PurchaseRepository purchaseRepository, CustomerService userService,
-                           ProductService productService, CartRepository cartRepository) {
+                           ProductService productService, CartRepository cartRepository, PaymentMethodRepository paymentMethodRepository) {
 		this.purchaseRepository = purchaseRepository;
 		this.userService = userService;
         this.productService = productService;
         this.cartRepository = cartRepository;
+        this.paymentMethodRepository = paymentMethodRepository;
     }
 	
 	
@@ -45,6 +49,10 @@ public class PurchaseService {
         purchaseEntity.setCustomer(this.userService.findUserById(BigInteger.valueOf(1l)));
         purchaseEntity.setPrecioTotal(this.buildPurchaseTotal(cartEntity));
 
+        PaymentMethodEntity paymentMethodEntity = this.paymentMethodRepository.findById(purchaseRequest.getIdMedioDePago())
+                .orElseThrow(() -> new NaturLifeException("no existe ese medio de pago"));
+
+        purchaseEntity.setPaymentMethod(paymentMethodEntity);
 
         this.purchaseRepository.save(purchaseEntity);
     }

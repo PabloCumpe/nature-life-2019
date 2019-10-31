@@ -5,7 +5,7 @@ angular
 
         var urlBase = $location.protocol() + "://" + $location.host() + ":" + $location.port();
 
-        this.purchaseCart = function () {
+        this.purchaseCart = function (medioPago) {
 
             var productos = this.getCart().map(function (e) {
                 return {
@@ -16,7 +16,7 @@ angular
 
             var request = {
                 productos: productos,
-                idMedioDePago: 1
+                idMedioDePago: medioPago
             }
 
             return $http.post(urlBase + '/purchase', request)

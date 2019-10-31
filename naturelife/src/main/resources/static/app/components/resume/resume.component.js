@@ -38,10 +38,10 @@ angular.module('resume')
                          });
                }
 
-               $scope.buy = function () {
+               $scope.buy = function (medioPago) {
                     $scope.showResume = false;
                     $rootScope.$emit('show-loading', 'Emit!');
-                    productsService.purchaseCart().then(
+                    productsService.purchaseCart(medioPago).then(
                          function (response) {
                               productsService.deleteAllCartProducts();
                               $scope.showSucessBuy = true;
